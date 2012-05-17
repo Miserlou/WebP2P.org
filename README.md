@@ -1,3 +1,12 @@
 # WebP2P.org
 
-More later.
+I hate how Bootstrap this looks.
+
+# TODO:
+
+* Make this not awful.
+
+Patches graciously accepted.
+Public domain.
+
+http://webp2p.org
