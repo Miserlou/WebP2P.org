@@ -8,14 +8,14 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://webp2p.org/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
-    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://webp2p.org/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -23,29 +23,50 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="http://webp2p.org/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://webp2p.org/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://webp2p.org/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://webp2p.org/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://webp2p.org/assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
-  <body>
+  <body style="overflow:hidden">
 
     <div class="container">
+      <style type="text/css">
+
+        /* sigma.js context : */
+        .sigma-parent {
+          position: relative;
+          background: none;
+        }
+        
+        .sigma-expand {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: -50%;
+          left: 50%;
+        }
+
+      </style>
+
+      <div class="sigma-parent sigma-expand"></div>
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit" style="background: #ffffff">
-        <h1>WebP2P.org</h1>
-				<p>
-				<p>WebP2P is a loose organization of hackers exploring the new P2P web technologies.</p>
-				<p>
-				<p>We'll be discussing, and more importantly <i>building</i>, new open source peer to peer technologies on the web using <b>WebRTC</b>, <b>ROAP</b>/<b>JSEP</b>, and <b>WebDHTs</b> to create resilient and distributed web-based peer to peer services.
-				<p>
-				<p>To join the discussion, just send an email to <b>webp2p@librelist.com</b>!
-				<p>
-				<p><a class="btn btn-success btn-large" href="mailto:webp2p@librelist.com" >Sign up!&raquo;</a></p>
-      </div>
+      <div class="sigma-expand" id="sigma-1"></div>
+        <div class="hero-unit" style="background: none; z-index: 10">
+          <h1>WebP2P.org</h1>
+          <p>
+          <p>WebP2P is a loose organization of hackers exploring the new P2P web technologies.</p>
+          <p>
+          <p>We'll be discussing, and more importantly <i>building</i>, new open source peer to peer technologies on the web using <b>WebRTC</b>, <b>ROAP</b>/<b>JSEP</b>, and <b>WebDHTs</b> to create resilient and distributed web-based peer to peer services.
+          <p>
+          <p>To join the discussion, just send an email to <b>webp2p@librelist.com</b>!
+          <p>
+          <p><a class="btn btn-success btn-large" href="mailto:webp2p@librelist.com" >Sign up!&raquo;</a></p>
+        </div>
+      <div class="sigma-expand" id="mouselayer-sigma-1"></div>
 
       <!-- Example row of columns -->
       <div class="row">
@@ -80,19 +101,121 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/bootstrap-transition.js"></script>
-    <script src="/assets/js/bootstrap-alert.js"></script>
-    <script src="/assets/js/bootstrap-modal.js"></script>
-    <script src="/assets/js/bootstrap-dropdown.js"></script>
-    <script src="/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="/assets/js/bootstrap-tab.js"></script>
-    <script src="/assets/js/bootstrap-tooltip.js"></script>
-    <script src="/assets/js/bootstrap-popover.js"></script>
-    <script src="/assets/js/bootstrap-button.js"></script>
-    <script src="/assets/js/bootstrap-collapse.js"></script>
-    <script src="/assets/js/bootstrap-carousel.js"></script>
-    <script src="/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://webp2p.org/assets/js/jquery.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-transition.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-alert.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-modal.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-tab.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-popover.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-button.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://webp2p.org/assets/js/bootstrap-typeahead.js"></script>
+
+    <script src="http://sigmajs.org/js/sigma.min.js"></script>
+    <script src="http://sigmajs.org/js/sigma.fisheye.js"></script>
+    <script type="text/javascript">
+
+      function init() {
+        function getRandomColor(a, b) {
+          var r = Math.random();
+          return 'rgb('+
+                 ((a.r+(b.r-a.r)*r)|0).toString() +
+                 ','+
+                 ((a.g+(b.g-a.g)*r)|0).toString() +
+                 ','+
+                 ((a.b+(b.b-a.b)*r)|0).toString() +
+                 ')';
+        };
+
+        var colorFrom = {
+          r: 150,
+          g: 150,
+          b: 150
+        };
+
+        var colorTo = {
+          r: 200,
+          g: 200,
+          b: 200
+        };
+
+        /**
+         * sigma.js instance 1 (banner) :
+         */
+        s1 = sigma.init(document.getElementById('sigma-1')).configProperties({
+          drawHoverNodes: false
+        }).drawingProperties({
+          labelThreshold: 10000,
+          defaultEdgeType: 'curve'
+        }).mouseProperties({
+          mouseEnabled: true
+        }).graphProperties({
+          scalingMode: 'outside'
+        });
+
+        var i, N = 900, E = 1234;
+
+        function rnd_snd() {
+            return (Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1);
+        }
+        function rnd(mean, stdev) {
+          return Math.round(rnd_snd()*stdev+mean);
+      }
+
+        for(i=0;i<N;i++){
+          s1.addNode(i,{
+            'x': rnd(99, 200),
+            'y': rnd(99, 200),
+            'size': 0.5+5*Math.random(),
+            'color': getRandomColor(colorFrom,colorTo)
+          });
+        }
+
+        for(i=0;i<E;i++){
+          s1.addEdge(i,Math.random()*N|0,Math.random()*N|0);
+        }
+
+        s1.draw();
+
+        var newParent = document.getElementById('mouselayer-sigma-1');
+        var mouseLayer = document.getElementById('sigma_mouse_1');
+
+        newParent.appendChild(mouseLayer);
+
+        mouseLayer.addEventListener('mouseover', function() {
+          s1.activateFishEye();
+        }, true);
+        mouseLayer.addEventListener('mouseout', function() {
+          s1.desactivateFishEye().draw(2,2,2);
+        }, true);
+
+        /**
+         * Resize every instances on window resizing, and
+         * some divs :
+         */
+        function resize(event){
+          for(var key in sigma.instances) {
+            sigma.instances[key].resize();
+          }
+        };
+
+        window.onresize = resize;
+        resize();
+      }
+
+      /**
+       * Wait for the DOM to be ready to start :
+       */
+      if (document.addEventListener) {
+        document.addEventListener("DOMContentLoaded", init, false);
+      } else {
+        window.onload = init;
+      }
+    </script>
 
   </body>
 </html>
