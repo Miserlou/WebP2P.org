@@ -33,6 +33,38 @@
   <body style="overflow:hidden">
 
     <div class="container">
+
+<style type="text/css">
+  .social-container {
+    overflow: hidden;
+    margin: 0 auto;
+    padding-left: 70px;
+  }
+
+  /* Custom page style : */
+  .hero-unit {
+    position: relative;
+  }
+
+  .hero-unit h1 {
+
+  }
+
+  .hero-unit h1,
+  .hero-unit p {
+    text-shadow: 2px 2px 2px #ffffff;
+  }
+
+  .hero-unit div.intro {
+    position: relative;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+</style>
+
       <style type="text/css">
 
         /* sigma.js context : */
@@ -51,11 +83,12 @@
 
       </style>
 
+
       <div class="sigma-parent sigma-expand"></div>
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="sigma-expand" id="sigma-1"></div>
-        <div class="hero-unit" style="background: none; z-index: 10">
+        <div class="hero-unit" style="background: none;">
           <h1>WebP2P.org</h1>
           <p>
           <p>WebP2P is a loose organization of hackers exploring the new P2P web technologies.</p>
@@ -132,15 +165,15 @@
         };
 
         var colorFrom = {
-          r: 150,
-          g: 150,
-          b: 150
-        };
-
-        var colorTo = {
           r: 200,
           g: 200,
           b: 200
+        };
+
+        var colorTo = {
+          r: 240,
+          g: 240,
+          b: 240
         };
 
         /**
@@ -154,10 +187,11 @@
         }).mouseProperties({
           mouseEnabled: true
         }).graphProperties({
-          scalingMode: 'outside'
+          scalingMode: 'outside',
+          maxNodeSize: 10
         });
 
-        var i, N = 900, E = 1234;
+        var i, N = 300, E = 600;
 
         function rnd_snd() {
             return (Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1);
@@ -168,9 +202,9 @@
 
         for(i=0;i<N;i++){
           s1.addNode(i,{
-            'x': rnd(99, 200),
-            'y': rnd(99, 200),
-            'size': 0.5+5*Math.random(),
+            'x': 1  + (.12 * rnd_snd()),
+            'y': 1  + (.12 * rnd_snd()),
+            'size': 0.5+2*Math.random(),
             'color': getRandomColor(colorFrom,colorTo)
           });
         }
