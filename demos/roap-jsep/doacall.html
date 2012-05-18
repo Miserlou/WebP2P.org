@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Do a call</title>
+</head>
+<body>
+<script src="http://webp2p.org/demos/roap-jsep/fake_jsep.js"></script>
+<script src="http://webp2p.org/demos/roap-jsep/roap_on_jsep.js"></script>
+<h1>Do a call</h1>
+This page will "do" a call from one PC object to another PC object, using
+a ROAP-over-JSEP object across a fake PeerConnection object emulating JSEP.
+<p>
+Look at the Javascript console, please
+
+<script>
+var pc1;
+var pc2;
+var camera;
+// What constructor to use for the connection objects.
+var ConnectionConstructor = RoapConnection;
+
+getSuccess = function(stream) {
+  console.log("Got stream " + stream);
+  console.log("URL: " + webkitURL.createObjectURL(stream));
+  camera = stream;
+  var result = document.getElementById("result");
+  result.innerHTML = "Got stream " + webkitURL.createObjectURL(stream);
+  document.getElementById("localVideo").src = webkitURL.createObjectURL(stream);
+}
+
+getFailure = function(stream) {
+  console.log("No stream for you");
+  var result = document.getElementById("result");
+  result.innerHTML = "Did not get stream";
+}
+
+getUserMedia = function() {
+  try {
+    navigator.webkitGetUserMedia("video,audio", getSuccess, getFailure);
+    console.log("Requested access to local media.");
+  } catch (e) {
+    console.log("getUserMedia error.");
+  }
+}
+
+createPc2 = function() {
+  console.log("Creating responder");
+  pc2 = new ConnectionConstructor("dummy arg", function(msg) {
+    var obj = document.getElementById("signal2");
+    obj.innerHTML += "<p>"
+    obj.innerHTML += msg;
+    pc1.processSignalingMessage(msg);
+  });
+  pc2.onaddstream = function(e) {
+    var stream = e.stream;
+    var url = webkitURL.createObjectURL(stream);
+    console.log("I think I have a video:" + url);
+    var v = document.getElementById("remoteVideo");
+    v.src = url;
+    document.getElementById("video2tag").innerHTML = url;
+  }
+  // Make sure there is a video flow in the reverse direction.
+  pc2.addStream(camera);
+}
+
+callSetup = function(addStreamBeforeConnect) {
+  console.log("Test starting");
+  pc1 = new ConnectionConstructor("dummy arg", function(msg) {
+    var obj = document.getElementById("signal1");
+    obj.innerHTML += "<p>"
+    obj.innerHTML += msg;
+    if (!pc2) {
+      createPc2();
+    }
+    pc2.processSignalingMessage(msg);
+  });
+  pc1.onaddstream = function(e) {
+    var stream = e.stream;
+    var url = webkitURL.createObjectURL(stream);
+    console.log("I think I have a return video:" + url);
+    var v = document.getElementById("backVideo");
+    v.src = url;
+    document.getElementById("video3tag").innerHTML = url;
+  }
+  pc2 = null;
+  console.log("Connecting");
+  if (addStreamBeforeConnect) {
+    addStream();
+  }
+}
+
+callHangup = function() {
+  pc1.close();
+  pc2.close();
+  pc1 = null;
+  pc2 = null;
+}
+
+addStream = function() {
+  if (camera) {
+    try {
+      pc1.addStream(camera);
+    } catch (e) {
+      console.log("Error in addstream: " + e);
+    }
+  } else {
+    console.log("No stream present - can't add");
+    throw "No stream present - can't add";
+  }
+}
+
+// Decide which version of session to create.
+useRealJsep = function() {
+  ConnectionConstructor = RoapConnection;
+  RoapConnection.JsepPeerConnectionConstructor = webkitPeerConnection00;
+  RoapConnection.SessionDescriptionConstructor = SessionDescription;
+  setLabel("sessiontype", "JSEP");
+}
+
+// Mock connectivity:
+useMockJsep = function() {
+  ConnectionConstructor = RoapConnection;
+  RoapConnection.JsepPeerConnectionConstructor = MockJsepPeerConnection
+  RoapConnection.SessionDescriptionConstructor = MockSessionDescription
+  setLabel("sessiontype", "Mock JSEP");
+}
+
+useRoap = function() {
+  ConnectionConstructor = webkitDeprecatedPeerConnection;
+  // We are not using RoapConnection, so its dependencies do not matter.
+  setLabel("sessiontype", "ROAP");
+}
+
+setLabel = function(name, value) {
+  try {
+    document.getElementById(name).innerHTML = value;
+  } catch(e) {
+    console.log("Failed to set label " + name + ", error=", e);
+  }
+}
+
+</script>
+
+<p>
+Session type: <span id="sessiontype">None selected</span>
+<br>
+<input type="button" id="mockJsep" value="Mock JSEP" onclick="useMockJsep()" >
+<input type="button" id="realJsep" value="Real JSEP" onclick="useRealJsep()" >
+<input type="button" value="Real ROAP" onclick="useRoap()" >
+<p>
+<input type="button" value="Setup call - no streams" onclick="callSetup()" >
+<input type="button" value="Setup call - one stream" onclick="callSetup(true)" >
+<p>
+<input type="button" value="Add stream" onclick="addStream()" >
+<input type="button" value="Close" onclick="callHangup()" >
+<p>
+<video id="localVideo" autoplay width="100px"></video>
+<br>
+Camera state: <span id="result">No camera yet</span>
+<p>
+<table border>
+<tr>
+<td>Local</td>
+<td>Remote</td>
+<tr>
+<tr>
+<td width="33%">
+<video id="backVideo" autoplay></video>
+<td width="33%">
+<video id="remoteVideo" autoplay></video>
+<tr>
+<td><span id="video2tag">
+<td><span id="video3tag">
+<tr>
+<td><span id="signal1"></span>
+<td><span id="signal2"></span>
+</table>
+<script>
+// Initialization
+getUserMedia();
+useRealJsep();
+</script>
+</body>
+</html>

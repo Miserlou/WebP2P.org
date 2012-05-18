@@ -88,7 +88,7 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="sigma-expand" id="sigma-1"></div>
-        <div class="hero-unit" style="background: none; padding-left: 0px; width: 80%">
+        <div class="hero-unit" style="background: none; padding-left: 0px; width: 80%; padding-bottom: 0px;">
           <h1>WebP2P.org</h1>
           <p>
           <p>WebP2P is a loose organization of hackers exploring the new P2P web technologies.</p>
@@ -101,7 +101,20 @@
         </div>
       <div class="sigma-expand" id="mouselayer-sigma-1"></div>
 
-      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Demos</h2>
+          <p>If you have a WebRTC-ready browser (like Chrome Canary, or Firefox Nightly), you can try out these demos:
+          <p><ul>
+             <li><a href="http://apprtc.appspot.com">AppRTC Video Chat Demo</a></li>
+             <li><a href="http://webp2p.org/demos/roap-jsep/doacall.html">ROAP/JSEP Call Initiation Demo</a></li>
+             <li><a href="http://share.gun.io:8080">DirtyShare</a></li>
+             </ul>
+        </div>
+      </div>
+
+      <br />
+
       <div class="row">
         <div class="span4">
           <h2>Mailing List</h2>
@@ -185,7 +198,7 @@
           labelThreshold: 10000,
           defaultEdgeType: 'curve'
         }).mouseProperties({
-          mouseEnabled: true
+          mouseEnabled: false
         }).graphProperties({
           scalingMode: 'outside',
           maxNodeSize: 10

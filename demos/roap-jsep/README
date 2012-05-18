@@ -1,0 +1,21 @@
+This library uses the Google JS test framework for testing.
+Install instructions are found here:
+
+http://code.google.com/p/google-js-test/wiki/Installing
+
+Note on prerequisites:
+
+The libv8 instructions are deficient; do this:
+- download v8 source according to instructions
+- make library=shared
+- sudo cp include/* /usr/include (clobbering libv8-dev if installed)
+- sudo chmod a+r /usr/include/v8*
+- sudo cp out/x64.release/lib.target/libv8.so /usr/lib
+- sudo chmod a+rx /usr/lib/libv8.so
+
+Then you can compile and install gjstest.
+
+To run the tests, run the "run_tests" shell script.
+This will also generate the roap_on_jsep_test.html file, which you can load
+in your browser to verify that the tests work there too.
+

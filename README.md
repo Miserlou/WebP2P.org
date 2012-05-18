@@ -4,7 +4,7 @@ I hate how Bootstrap this looks.
 
 # TODO:
 
-* Make this not awful.
+* Make this less awful.
 
 Patches graciously accepted.
 Public domain.
